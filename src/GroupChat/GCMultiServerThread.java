@@ -5,7 +5,6 @@ import java.io.*;
 
 public class GCMultiServerThread extends Thread {
     private Socket socket = null;
-    public PrintWriter out = null;
     private int id = 0;
 
     public GCMultiServerThread(Socket socket, int id) {

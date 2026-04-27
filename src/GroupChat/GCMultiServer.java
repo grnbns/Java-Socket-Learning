@@ -23,7 +23,7 @@ public class GCMultiServer {
             int i = 1;
             while (listening) {
                 GCMultiServerThread thread = new GCMultiServerThread(serverSocket.accept(), i);
-                writerList.add(thread.out);
+                // writerList.add(thread.out);
                 thread.start();
                 i++;
             }

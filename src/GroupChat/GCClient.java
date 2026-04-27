@@ -54,6 +54,7 @@ public class GCClient {
                     BufferedReader in = new BufferedReader(new InputStreamReader(gcSocket.getInputStream()));
                     BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
             ) {
+                System.out.println("Successfully connected!");
                 String fromServer, fromUser;
                 while ((fromServer = in.readLine()) != null) {
                     System.out.println(fromServer);
