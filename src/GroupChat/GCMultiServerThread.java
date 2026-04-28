@@ -44,7 +44,7 @@ public class GCMultiServerThread extends Thread {
         ) {
             GCMultiServer.writerList.add(out);
 
-            String inputLine, outputLine;
+            String inputLine;
 
             while ((inputLine = in.readLine()) != null) {
                 GCMultiServer.broadcast("Client " + id + ": " + inputLine);

@@ -45,7 +45,7 @@ import java.net.Socket;
 
 public class GCClient {
     public static void main(String[] args) {
-        String hostName = args[0];
+            String hostName = args[0];
             int portNumber = Integer.parseInt(args[1]);
 
             try (
@@ -54,14 +54,20 @@ public class GCClient {
                     BufferedReader in = new BufferedReader(new InputStreamReader(gcSocket.getInputStream()));
                     BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
             ) {
-                System.out.println("Successfully connected!");
-                String fromServer, fromUser;
-                while ((fromServer = in.readLine()) != null) {
-                    System.out.println(fromServer);
+                String fromServer = "Successful connection with host: " + hostName + " at port: " + portNumber + ".", fromUser;
+                boolean first = true;
+                while (true) {
 
-                    fromUser = stdIn.readLine();
-                    if (fromUser != null) {
-                        out.println(fromUser);
+                    if (in.ready()) {
+                        fromServer = in.readLine();
+                        System.out.println(fromServer);
+                    }
+
+                    if (stdIn.ready()) {
+                        fromUser = stdIn.readLine();
+                        if (fromUser != null) {
+                            out.println(fromUser);
+                        }
                     }
                 }
             } catch (IOException e) {
